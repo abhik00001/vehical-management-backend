@@ -8,7 +8,7 @@ python manage.py migrate
 
 if [ "$CREATE_SUPERUSER" = "True" ]; then
     echo "✅ Creating superuser from env vars..."
-    python create_superuser.py
+    python manage.py createsuperuser --no-input
 else
     echo "🔕 CREATE_SUPERUSER is not enabled. Skipping superuser creation."
 fi
