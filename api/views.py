@@ -41,7 +41,7 @@ class UserView(APIView):
         
         if serializer.is_valid():            
             serializer.save(created_by = request.user)
-            link = f"http://localhost:5173/verify_email/{uid}"
+            link = f"https://vehical-management-frontend.onrender.com/verify_email/{uid}"
             send_mail(
                 subject= f"Account Creation of {name}",
                 message = f"Set Your Password for account creation\n {link}",
@@ -131,7 +131,7 @@ class ForgotPassword(APIView):
         if user:
             uid = urlsafe_base64_encode(force_bytes(user.id))
             token = default_token_generator.make_token(user)
-            link = f"http://localhost:5173/reset-password/{uid}/{token}"
+            link = f"https://vehical-management-frontend.onrender.com/reset-password/{uid}/{token}"
             send_mail(
                 subject= f"Forgot password of {user.first_name}",
                 message = f"Click and Open link for password Reset\n {link}",
