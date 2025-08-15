@@ -1,6 +1,9 @@
 import os
 from django.contrib.auth import get_user_model
+import django
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "yourproject.settings")
+django.setup()
 User = get_user_model()
 
 # username = os.environ.get("DJANGO_SUPERUSER_USERNAME", "admin")
