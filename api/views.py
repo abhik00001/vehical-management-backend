@@ -204,8 +204,8 @@ class DashboardView(APIView):
         # drivers 
         
         drivers = CustomUser.objects.filter(role = 'driver').count()
-        assigned_drivers = CustomUser.objects.filter(role = 'driver',is_active = True).count()
-        unassigned_drivers = CustomUser.objects.filter(role = 'driver',is_active = False).count()
+        assigned_drivers = Driver.objects.exclude(vehicle_assigned = None).count()
+        unassigned_drivers = CustomUser.objects.filter(vehicle_assigned = None).count()
         userAdded_drivers = CustomUser.objects.filter(role='driver',created_by = request.user).count()
         
         # vehicles
