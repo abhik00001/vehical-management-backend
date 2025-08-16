@@ -75,8 +75,8 @@ class VerifyEmailView(APIView):
         password = request.data['password']
         
         user = CustomUser.objects.filter(email=email).first()
-        driver = Driver.objects.get(user = user.id)
-        print(driver)
+        # driver = Driver.objects.get(user = user.id)
+        # print(driver)
         serializer = UserSerializer(user)
         if user:
             user.set_password(password)
