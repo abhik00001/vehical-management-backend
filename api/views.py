@@ -146,7 +146,7 @@ class loginView(APIView):
     def post(self, request):
         email = request.data.get('email')
         password = request.data.get('password')
-        user = CustomUser.objects.filter(email=email)
+        user = CustomUser.objects.filter(email=email).first()
         if user:
             serializer = UserSerializer(user)
             if user.is_active == False:
