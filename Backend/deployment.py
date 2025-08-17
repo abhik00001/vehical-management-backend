@@ -24,10 +24,6 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
-STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'reactBuild/static/build',
-]
 
 STORAGES = {
     'default': {

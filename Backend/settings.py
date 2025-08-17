@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2w((2q(m%8q_(b+b8bqybos5*3@#e-4ck3_^@x6%+$se^@!=me'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = []
 
@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework_simplejwt',
     "corsheaders",
-    "reactBuild",
 ]
 
 REST_FRAMEWORK = {
@@ -82,7 +81,7 @@ EMAIL_PORT = 587
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR,"reactBuild/static/build")],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -143,9 +142,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [
-    BASE_DIR / 'reactBuild/static/build',
-]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # STORAGES = {
 #     # ...
