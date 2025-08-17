@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-2w((2q(m%8q_(b+b8bqybos5*3@#e-4ck3_^@x6%+$se^@!=me'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -144,7 +144,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'reactBuild/static/build/assets',
+    BASE_DIR / 'reactBuild/static/build',
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # STORAGES = {
