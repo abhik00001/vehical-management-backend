@@ -144,7 +144,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATICFILES_DIRS = [
-    BASE_DIR / 'reactBuild/static/build',
+    BASE_DIR / 'reactBuild/static/build/assets',
 ]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 # STORAGES = {
