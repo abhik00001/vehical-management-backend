@@ -363,19 +363,21 @@ class SingleDriverView(APIView):
     
     def put(self,request,id):
         try:
-            data = request.data
-            # data['user'] = user.id
-            if data["vehicle_assigned"] == "":
+            data = request.data.copy()
+            driver = Driver.objects.get(id=id)
+            vehicle_id = data["vehicle_assigned"]
+            if vehicle_id == "":
                 data["vehicle_assigned"] = None
+                print("none")
                 # user.is_active = False
                 # user.save()
-            elif data["vehicle_assigned"] != "":
-                vehicle = Vehicle.objects.get(id=data["vehicle_assigned"])
+            elif vehicle_id is not None:
+                vehicle = Vehicle.objects.get(id=vehicle_id)
                 vehicle.status = True
                 vehicle.save()
                 # user.is_active = True
                 # user.save()
-            driver = Driver.objects.filter(id=id).first()
+            
             serializer = DriverSerializer(driver,data = data,partial=True)
             if serializer.is_valid():
                 serializer.save()

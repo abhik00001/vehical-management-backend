@@ -55,7 +55,10 @@ class DriverSerializer(serializers.ModelSerializer):
         if Driver.objects.filter(user=user).exists():
             raise serializers.ValidationError({'error': 'User already exists.'})
         if self.instance:
-            if Driver.objects.filter(vehicle_assigned=vehicle).exclude(id=self.instance.id).exists():
+            if vehicle == None:
+                return validated_data
+            
+            elif Driver.objects.filter(vehicle_assigned=vehicle).exclude(id=self.instance.id).exists():
                 raise serializers.ValidationError("This vehicle is already assigned to another driver.")
         else:
             if vehicle != None:    
