@@ -355,9 +355,26 @@ class SingleDriverView(APIView):
     permission_classes = [IsAuthenticated]
     def get(self,request,id):
         try:
-            driver = Driver.objects.get(id=id)
-            serializer = DriverSerializer(driver)
-            return Response(serializer.data,status=status.HTTP_200_OK)
+            data = request.data
+            # data['user'] = user.id
+            if data["vehicle_assigned"] == "":
+                data["vehicle_assigned"] = None
+                # user.is_active = False
+                # user.save()
+            elif data["vehicle_assigned"] != "":
+                vehicle = Vehicle.objects.get(id=data["vehicle_assigned"])
+                vehicle.status = True
+                vehicle.save()
+                # user.is_active = True
+                # user.save()
+                
+            serializer = DriverSerializer(data = data)
+            if serializer.is_valid():
+                serializer.save()
+                print(serializer.data)
+                return Response(serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except :
             return Response({'message':'driver not found'},status=status.HTTP_404_NOT_FOUND)
     
